@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_effect/Home/home_screen.dart';
 
 void main() => runApp(FlutterEffect());
 
@@ -10,7 +11,8 @@ class FlutterEffect extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-//      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: FlutterEffectHome(),
     );
   }
 }
