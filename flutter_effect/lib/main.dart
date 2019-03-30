@@ -9,7 +9,8 @@ class FlutterEffect extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+//        primaryColor: Colors.blueAccent,
+        primarySwatch: Colors.blue
       ),
       debugShowCheckedModeBanner: false,
       home: FlutterEffectHome(),

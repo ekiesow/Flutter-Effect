@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_effect/drawer.dart';
 
 class FlutterEffectHome extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class FlutterEffectHome extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      drawer: HomeDrawer(),
+      drawer: MainDrawer(),
     body: HomeBody(),
     );
   }
@@ -26,58 +27,41 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2),
       physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.all(12.0),
+        padding: EdgeInsets.zero,
         itemCount: index,
         itemBuilder: (context, index) {
-          return Text("List Tile #: $index");
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Card(
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(Icons.star_border),
+                            onPressed: () {
+                              //TODO: add saved method
+                            },
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: Center(
+                          child: Text("List Tile: $index"),
+                      ),
+                    ),
+                  ],
+                ),
+            ),
+          );
         },
     );
   }
 }
 
-class HomeDrawer extends StatefulWidget {
-  @override
-  _HomeDrawerState createState() => _HomeDrawerState();
-}
-
-class _HomeDrawerState extends State<HomeDrawer> {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 0.0),
-                  child: CircleAvatar(
-                    child: Wrap(
-                      children: <Widget>[
-                        Text("Your Picture")
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text("Your Username",
-                    style: TextStyle(
-                        fontSize: 20.0
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
