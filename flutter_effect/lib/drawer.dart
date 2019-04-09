@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_effect/profile.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -8,13 +9,18 @@ class MainDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-              accountName: Text("Austin Pope",),
-              accountEmail: Text("itstheradishspirit",),
+              // TODO: get user's name from FB
+              accountName: Text("Austin Pope"),
+              // TODO: get username from FB
+              accountEmail: Text("itstheradishspirit"),
               currentAccountPicture: GestureDetector(
                 onTap: (){
-                  // TODO: go to profile page/edit profile
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
                 },
                 child: CircleAvatar(
+                  // TODO: add background image from account, if null show background with first letter of name
 //                backgroundImage: ,
                   backgroundColor: Colors.white,
                   child: Text("A",
