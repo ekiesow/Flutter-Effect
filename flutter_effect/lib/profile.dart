@@ -58,3 +58,33 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
+class HomeViewSelection extends StatefulWidget {
+  @override
+  _HomeViewSelectionState createState() => _HomeViewSelectionState();
+}
+
+class _HomeViewSelectionState extends State<HomeViewSelection> {
+  List<String> listViews = ["Grid View", "List View"];
+  String selection = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: DropdownButton<String>(
+        value: selection,
+        onChanged: (String newSelection){
+          setState((){
+            selection = newSelection;
+          });
+        },
+        items: listViews.map<DropdownMenuItem<String>>((String value){
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
