@@ -49,16 +49,16 @@ class _MainDrawerState extends State<MainDrawer> {
 //            },
           ),
           ListTile(
-            title: Text("Module"),
+            title: Text("Scaffold"),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
-
+              Navigator.of(context).pushNamed("Scaffold");
             },
           ),
           Divider(),
           ListTile(
             title: Text("Close"),
-            trailing: Icon(Icons.cancel),
+            trailing: Icon(Icons.close),
             onTap: () {
               Navigator.pop(context);
             },
