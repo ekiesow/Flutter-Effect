@@ -12,7 +12,7 @@ class ModuleList extends StatefulWidget {
 }
 
 class _ModuleListState extends State<ModuleList> {
-  final Set<String> saved = Set<String>();
+  static final Set<String> saved = Set<String>();
 
   @override
   Widget build(BuildContext context) {
