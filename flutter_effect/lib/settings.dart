@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_effect/Home/modules/module_list.dart';
 import 'package:flutter_effect/global_scaffold.dart';
 
 class Settings extends StatelessWidget {
