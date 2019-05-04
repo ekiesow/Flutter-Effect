@@ -5,6 +5,7 @@ import 'package:flutter_effect/Home/modules/scaffold/scaffold_module.dart';
 void main() => runApp(FlutterEffect());
 
 class FlutterEffect extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
