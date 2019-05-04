@@ -7,9 +7,13 @@ class MainDrawer extends StatefulWidget {
 }
 
 class _MainDrawerState extends State<MainDrawer> {
-  List<Widget> otherAccounts = [IconButton(icon: Icon(Icons.settings), onPressed: (){
-    print("tapped");
-  }),];
+  List<Widget> otherAccounts = [
+    IconButton(icon: Icon(Icons.settings),
+        onPressed: (){
+          print("tapped");
+        }
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,8 @@ class _MainDrawerState extends State<MainDrawer> {
                     MaterialPageRoute(builder: (context) => Profile()));
               },
               child: CircleAvatar(
-                // TODO: add background image from account, if null show background with first letter of name
+                // TODO: add background image from account,
+                //  TODO: if null show background with first letter of name
 //                backgroundImage: ,
                 backgroundColor: Colors.white,
                 child: Text("A",
@@ -49,16 +54,17 @@ class _MainDrawerState extends State<MainDrawer> {
 //            },
           ),
           ListTile(
-            title: Text("Module"),
+            title: Text("Scaffold"),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
-
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed("Scaffold");
             },
           ),
           Divider(),
           ListTile(
             title: Text("Close"),
-            trailing: Icon(Icons.cancel),
+            trailing: Icon(Icons.close),
             onTap: () {
               Navigator.pop(context);
             },
