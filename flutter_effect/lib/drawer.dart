@@ -48,14 +48,9 @@ class _MainDrawerState extends State<MainDrawer> {
 //              });
 //            },
           ),
-          ListTile(
-            title: Text("Scaffold"),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.of(context).pushNamed("Scaffold");
-            },
-          ),
+          moduleListTile("Scaffold"),
           Divider(),
+          moduleListTile("Drawer"),
           ListTile(
             title: Text("Close"),
             trailing: Icon(Icons.close),
@@ -65,7 +60,20 @@ class _MainDrawerState extends State<MainDrawer> {
           ),
         ],
       ),
-    );  }
+    );
+  }
+
+  Widget moduleListTile(String moduleName){
+    return ListTile(
+      title: Text(moduleName),
+      trailing: Icon(Icons.arrow_forward),
+      onTap: () {
+        Navigator.pop(context);
+        Navigator.of(context).pushNamed(moduleName);
+      },
+    );
+  }
+
 }
 
 

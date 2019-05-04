@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_effect/Home/home_screen.dart';
+import 'package:flutter_effect/Home/modules/scaffold/appBar_module.dart';
 import 'package:flutter_effect/Home/modules/scaffold/scaffold_module.dart';
 
 void main() => runApp(FlutterEffect());
@@ -18,6 +19,8 @@ class FlutterEffect extends StatelessWidget {
       routes: {
         '/' : (context) => FlutterEffectHome(),
         'Scaffold' : (context) => ScaffoldModule(),
+        'AppBar' : (context) => AppBarModule(),
+//        'Drawer' : (context) => DrawerModule(),
     },
       debugShowCheckedModeBanner: false,
 //      home: FlutterEffectHome(),

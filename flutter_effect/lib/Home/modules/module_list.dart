@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 class ModuleList extends StatefulWidget {
   final Set<String> modules;
-//  final Set<String> saved;
 
   const ModuleList({Key key, @required this.modules, }) : super(key: key);
-  // @required this.saved
 
   @override
   _ModuleListState createState() => _ModuleListState();

@@ -6,7 +6,7 @@ class HomeModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Set<String> modules = {"Scaffold", };
+    final Set<String> modules = {"Scaffold", "Drawer", };
 
     return ModuleList(modules: modules,);
   }
