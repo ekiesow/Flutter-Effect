@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/Home/modules/module_list.dart';
-import 'package:flutter_effect/drawer.dart';
 import 'package:flutter_effect/global_scaffold.dart';
 
 class ScaffoldModule extends StatefulWidget {
@@ -18,12 +18,13 @@ class _ScaffoldModuleState extends State<ScaffoldModule> {
 
   @override
   Widget build(BuildContext context) {
-  return GlobalScaffold(color: Theme.of(context).backgroundColor,
+  return GlobalScaffold(
 //    home: ModuleList(modules: modules, saved: widget.saved,),
 
-    home: ModuleList(modules: modules,),
+    body: ModuleList(modules: modules,),
 //      drawer: MainDrawer(),
-      title: "Scaffold",
+    title: "Scaffold",
+    context: context,
     );
 
   }

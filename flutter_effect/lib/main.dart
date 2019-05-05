@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_effect/Home/home_screen.dart';
+
+import 'package:flutter_effect/Auth/auth.dart';
+import 'package:flutter_effect/Auth/auth_provider.dart';
+import 'package:flutter_effect/Auth/root_page.dart';
+import 'package:flutter_effect/Home/modules/scaffold/appBar_module.dart';
 import 'package:flutter_effect/Home/modules/scaffold/scaffold_module.dart';
 
 void main() => runApp(FlutterEffect());
@@ -7,19 +11,21 @@ void main() => runApp(FlutterEffect());
 class FlutterEffect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-//        primaryColor: Colors.blueAccent,
-        primarySwatch: Colors.blue
+    return AuthProvider(
+      auth: Auth(),
+      child: MaterialApp(
+        title: 'FlutterEffect',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: RootPage(),
+        routes: {
+          'Scaffold' : (context) => ScaffoldModule(),
+          'AppBar' : (context) => AppBarModule(),
+//        'Drawer' : (context) => DrawerModule(),
+        },
+        debugShowCheckedModeBanner: false,
       ),
-      initialRoute: '/',
-      routes: {
-        '/' : (context) => FlutterEffectHome(),
-        'Scaffold' : (context) => ScaffoldModule(),
-    },
-      debugShowCheckedModeBanner: false,
-//      home: FlutterEffectHome(),
     );
   }
 }

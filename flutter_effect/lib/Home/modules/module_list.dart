@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_effect/settings.dart';
 
 class ModuleList extends StatefulWidget {
   final Set<String> modules;
-//  final Set<String> saved;
 
   const ModuleList({Key key, @required this.modules, }) : super(key: key);
-  // @required this.saved
 
   @override
   _ModuleListState createState() => _ModuleListState();
 }
 
 class _ModuleListState extends State<ModuleList> {
+
   static final Set<String> saved = Set<String>();
   static bool grid = true;
+
 
   @override
   Widget build(BuildContext context) {

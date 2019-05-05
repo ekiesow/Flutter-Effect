@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/profile.dart';
 
 class MainDrawer extends StatefulWidget {
@@ -47,20 +48,16 @@ class _MainDrawerState extends State<MainDrawer> {
                 color: Theme.of(context).backgroundColor
             ),
 //            onDetailsPressed: () {
-//              // TODO: do awesome shit here, or not
+//              // TODO: do awesome stuff here, or not
 //              setState(() {
 //                return HomeViewSelection();
 //              });
 //            },
           ),
-          ListTile(
-            title: Text("Scaffold"),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed("Scaffold");
-            },
-          ),
+
+          moduleListTile("Scaffold"),
+          Divider(),
+          moduleListTile("Drawer"),
           Divider(),
           ListTile(
             title: Text("Close"),
@@ -71,7 +68,20 @@ class _MainDrawerState extends State<MainDrawer> {
           ),
         ],
       ),
-    );  }
+    );
+  }
+
+  Widget moduleListTile(String moduleName){
+    return ListTile(
+      title: Text(moduleName),
+      trailing: Icon(Icons.arrow_forward),
+      onTap: () {
+        Navigator.pop(context);
+        Navigator.of(context).pushNamed(moduleName);
+      },
+    );
+  }
+
 }
 
 

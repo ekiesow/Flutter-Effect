@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/Home/modules/module_list.dart';
 
 class HomeModule extends StatelessWidget {
@@ -6,7 +7,7 @@ class HomeModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Set<String> modules = {"Scaffold", };
+    final Set<String> modules = {"Scaffold", "Drawer", };
 
     return ModuleList(modules: modules,);
   }
