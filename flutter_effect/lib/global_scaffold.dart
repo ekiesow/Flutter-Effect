@@ -23,11 +23,13 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
 
   _GlobalScaffold() {
     FutureBuilder<dynamic>(
-      future: SharedPref().getBackgroundColorPref(GlobalScaffold.backgroundColorInt),
+      future: SharedPref().getBackgroundColorPref(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
-        return snapshot.hasData ?
-        parseColor(snapshot.data, GlobalScaffold.backgroundColor) :
-        getDefaultColor(widget.context, GlobalScaffold.backgroundColor);
+        return setColor(snapshot.data);
+
+//          snapshot.hasData ?
+//        parseColor(snapshot.data, GlobalScaffold.backgroundColor) :
+//        getDefaultColor(widget.context, GlobalScaffold.backgroundColor);
       },
     );
   }
@@ -53,5 +55,25 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
   parseColor(int value, Color backgroundColor){
     backgroundColor = new Color(value);
 
+  }
+
+  setColor(int snapshotData){
+    if(snapshotData == Colors.blue.value){
+      setState(() {
+        GlobalScaffold.backgroundColor = Colors.blue;
+      });
+    }
+    else if(snapshotData == Colors.red.value){
+      setState(() {
+        print("Red State");
+        GlobalScaffold.backgroundColor = Colors.red;
+      });
+    }
+    else {
+      setState(() {
+        print("defalut State");
+        GlobalScaffold.backgroundColor = Colors.blue;
+      });
+    }
   }
 }

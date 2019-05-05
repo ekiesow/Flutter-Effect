@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/global_scaffold.dart';
+import 'package:flutter_effect/global_scaffold.dart';
+import 'package:flutter_effect/shared_pref.dart';
 
 class AppBarModule extends StatefulWidget {
   @override
@@ -15,13 +18,7 @@ class _AppBarModuleState extends State<AppBarModule> {
         child: Center(
           child: Column(
             children: <Widget>[
-              ButtonBar(
-                children: <Widget>[
-                  FlatButton(
-                      onPressed: null,
-                      child: null)
-                ],
-              )
+              dropDownType(),
 
             ],
           ),
@@ -30,20 +27,23 @@ class _AppBarModuleState extends State<AppBarModule> {
     );
   }
 
-  List<String> menuItems = ["micro", "regional", "brewpub", "large", "planning",
-    "bar", "contract", "proprietor"];
-  String selection = "";
+  List<String> colorMenu = ["Blue", "Red"];
+  String selection = "Blue";
   Widget dropDownType() {
     return DropdownButton<String>(
 
       value: selection,
       onChanged: (String newSelection) {
         setState(() {
-          selection = newSelection;
+          this.selection = newSelection;
+          SharedPref().updateBackgroundColorPref(getSharedPrefColor());
+          SharedPref().getBackgroundColorPref();
+//          setColor();
+
         });
       },
 
-      items: menuItems.map<DropdownMenuItem<String>>((String value) {
+      items: colorMenu.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -52,6 +52,42 @@ class _AppBarModuleState extends State<AppBarModule> {
 
     );
   }
+
+  int getSharedPrefColor(){
+    for(String selection in colorMenu){
+      if(selection == "Blue"){
+        return Colors.blue.value;
+      }
+      else if(selection == "Red"){
+        return Colors.red.value;
+      }
+    }
+    return Colors.blue.value;
+
+  }
+
+  String getCurColor(){
+    int colorInt = GlobalScaffold.backgroundColorInt;
+    if(colorInt == Colors.blue.value){
+      return "Blue";
+    }
+    else if(colorInt == Colors.red.value){
+      return "Red";
+    }
+    return "Blue";
+  }
+
+
+//  void setColor(){
+////    GlobalScaffold.backgroundColor = new Color(GlobalScaffold.backgroundColorInt);
+//    int colorInt = GlobalScaffold.backgroundColorInt;
+//    if(colorInt == Colors.blue.value){
+//      GlobalScaffold.backgroundColor = Colors.blue;
+//    }
+//    else if(colorInt == Colors.red.value){
+//      GlobalScaffold.backgroundColor = Colors.red;
+//    }
+//  }
 
 }
 
