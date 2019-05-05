@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/profile.dart';
 
 class MainDrawer extends StatefulWidget {
@@ -42,7 +43,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 color: Theme.of(context).backgroundColor
             ),
 //            onDetailsPressed: () {
-//              // TODO: do awesome shit here, or not
+//              // TODO: do awesome stuff here, or not
 //              setState(() {
 //                return HomeViewSelection();
 //              });
@@ -51,6 +52,7 @@ class _MainDrawerState extends State<MainDrawer> {
           moduleListTile("Scaffold"),
           Divider(),
           moduleListTile("Drawer"),
+          Divider(),
           ListTile(
             title: Text("Close"),
             trailing: Icon(Icons.close),

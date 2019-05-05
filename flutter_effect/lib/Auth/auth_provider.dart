@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/Auth/auth.dart';
 
 class AuthProvider extends InheritedWidget {

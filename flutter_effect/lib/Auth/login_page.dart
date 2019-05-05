@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/Auth/auth.dart';
 import 'package:flutter_effect/Auth/auth_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -108,6 +109,7 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(labelText: 'Email'),
         validator: EmailFieldValidator.validate,
         onSaved: (String value) => _email = value,
+        keyboardType: TextInputType.emailAddress,
       ),
       TextFormField(
         key: Key('password'),

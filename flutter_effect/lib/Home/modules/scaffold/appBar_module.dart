@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_effect/global_scaffold.dart';
-import 'package:flutter_effect/global_scaffold.dart';
 import 'package:flutter_effect/shared_pref.dart';
 
 class AppBarModule extends StatefulWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/Auth/auth.dart';
 import 'package:flutter_effect/Auth/auth_provider.dart';
 import 'package:flutter_effect/Auth/login_page.dart';

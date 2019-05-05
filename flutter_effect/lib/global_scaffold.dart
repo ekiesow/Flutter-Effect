@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_effect/shared_pref.dart';
 
 class GlobalScaffold extends StatefulWidget {
@@ -6,13 +7,14 @@ class GlobalScaffold extends StatefulWidget {
   final Widget body;
   final Color color;
   final String title;
+  final List<Widget> actions;
   static int backgroundColorInt;
   static Color backgroundColor;
   final BuildContext context;
 
   const GlobalScaffold({Key key,
     this.drawer, @required this.body, this.color,
-    @required this.title, this.context}) :
+    @required this.title, this.context, this.actions}) :
         super(key: key);
 
   @override
@@ -42,6 +44,7 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
         title: Text(widget.title,
         ),
         centerTitle: true,
+        actions: widget.actions,
       ),
       drawer: widget.drawer,
       body: widget.body,
