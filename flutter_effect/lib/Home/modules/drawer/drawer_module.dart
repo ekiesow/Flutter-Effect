@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_effect/global_scaffold.dart';
@@ -24,6 +26,8 @@ class _DrawerModuleState extends State<DrawerModule> {
 }
 
 class DrawerBody extends StatelessWidget {
+  Completer<WebViewController> _controller = Completer<WebViewController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,9 +58,15 @@ class DrawerBody extends StatelessWidget {
               ),
             ),
           ),
-//          Center(
+//          FittedBox(
+//            alignment: Alignment.bottomCenter,
+//            fit: BoxFit.contain,
 //            child: WebView(
-//              initialUrl: null,
+//              initialUrl: "https://github.com/ekiesow/Flutter-Effect/blob/e5f1ef99590a061f105a4796f5071be253a0580f/flutter_effect/lib/Home/modules/drawer/module_code.dart#L11-L33",
+//              javascriptMode: JavascriptMode.unrestricted,
+//              onWebViewCreated: (WebViewController webViewController) {
+//                _controller.complete(webViewController);
+//              },
 //            ),
 //          ),
         ],
