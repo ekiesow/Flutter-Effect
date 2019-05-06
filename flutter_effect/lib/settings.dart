@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_effect/global_scaffold.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class Settings extends StatefulWidget {
   @override
@@ -27,7 +29,7 @@ class _SettingsFormState extends State<SettingsForm> {
   final userDisplayController = TextEditingController();
   final userNameController = TextEditingController();
 
-  final mySnackBar = SnackBar(content: Text("Updating . . ."), duration: Duration(seconds: 1));
+  final mySnackBar = SnackBar(content: Text("Updating . . ."), duration: Duration(seconds: 2));
 
   String _userDisplayName = "";
   String _userName = "";
@@ -78,8 +80,15 @@ class _SettingsFormState extends State<SettingsForm> {
                     _userDisplayName = userDisplayController.text;
                   });
 
-                  // TODO: update FireBase with _userDisplayName
-
+                  Firestore.instance.runTransaction((transaction) async {
+                    DocumentSnapshot freshSnap = await Firestore.instance
+                        .collection("name")
+                        .document("VvqgGrzToXRYvqRqAYDp")
+                        .get();
+                    await transaction.update(freshSnap.reference, {
+                      "name": _userDisplayName,
+                    });
+                  });
                 }
               },
             ),
@@ -114,8 +123,15 @@ class _SettingsFormState extends State<SettingsForm> {
                     _userName = userNameController.text;
                   });
 
-                  // TODO: update FireBase with _userName
-
+                  Firestore.instance.runTransaction((transaction) async {
+                    DocumentSnapshot freshSnap = await Firestore.instance
+                        .collection("username")
+                        .document("3zqigfRFGwW3gSCEgeME")
+                        .get();
+                    await transaction.update(freshSnap.reference, {
+                      "username": _userName,
+                    });
+                  });
                 }
               },
             ),
@@ -124,6 +140,4 @@ class _SettingsFormState extends State<SettingsForm> {
       ),
     );
   }
-
-
 }
