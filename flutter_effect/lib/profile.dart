@@ -25,19 +25,10 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<Null> _uploadProfilePicture() async {
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
-
-    final StorageReference storageRef = FirebaseStorage.instance.ref().child("pictures");
-    final StorageUploadTask uploadTask = storageRef.putFile(
-      File("pictures"),
-      StorageMetadata(
-        contentType: "image" + '/' ".jpg",
-      )
-    );
-    final StorageTaskSnapshot downloadUrl =
-    (await uploadTask.onComplete);
-    final String url = (await downloadUrl.ref.getDownloadURL());
-    print('URL is $url');
+    StorageReference storageRef =
+        FirebaseStorage.instance.ref().child("fluttereffect-75b2f.appspot.com");
+    final StorageUploadTask uploadTask = storageRef.putFile(_image);
+    return await (await uploadTask.onComplete).ref.getDownloadURL();
   }
 
   @override
@@ -50,6 +41,7 @@ class _ProfileState extends State<Profile> {
             GestureDetector(
               onTap: () {
                 getImage();
+                _uploadProfilePicture();
               },
               child: CircleAvatar(
                 // TODO: add background image from account, if null show background with first letter of name
