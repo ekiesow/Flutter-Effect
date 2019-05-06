@@ -54,11 +54,11 @@ class DrawerBody extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: WebView(
-              initialUrl: null,
-            ),
-          ),
+//          Center(
+//            child: WebView(
+//              initialUrl: null,
+//            ),
+//          ),
         ],
       ),
     );
