@@ -17,26 +17,22 @@ class Profile extends StatelessWidget {
 //                    backgroundImage: ,
                 backgroundColor: Theme.of(context).backgroundColor,
                 child: Column(
-//                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0.0),
-                          child: Text("E",
-                            style: TextStyle(fontSize: 60.0,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ],
+                    Text("E",
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.fade,
+                      style: TextStyle(fontSize: 60.0,
+                          color: Colors.white),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         IconButton(
                             icon: Icon(Icons.edit),
+                            alignment: Alignment.bottomRight,
+                            padding: EdgeInsets.zero,
                             onPressed: (){
                               // TODO: camera shit here
                               print("Cheese!");
