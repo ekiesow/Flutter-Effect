@@ -1,6 +1,7 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_effect/global_scaffold.dart';
 
 class Profile extends StatefulWidget {
@@ -10,6 +11,15 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   String name;
+  File _image;
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +30,7 @@ class _ProfileState extends State<Profile> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
+                getImage();
               },
               child: CircleAvatar(
                 // TODO: add background image from account, if null show background with first letter of name
