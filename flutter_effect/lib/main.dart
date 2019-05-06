@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_effect/Auth/auth.dart';
 import 'package:flutter_effect/Auth/auth_provider.dart';
 import 'package:flutter_effect/Auth/root_page.dart';
+import 'package:flutter_effect/Home/modules/drawer/drawer_module.dart';
 import 'package:flutter_effect/Home/modules/scaffold/appBar_module.dart';
 import 'package:flutter_effect/Home/modules/scaffold/scaffold_module.dart';
 
@@ -22,7 +23,7 @@ class FlutterEffect extends StatelessWidget {
         routes: {
           'Scaffold' : (context) => ScaffoldModule(),
           'AppBar' : (context) => AppBarModule(),
-//        'Drawer' : (context) => DrawerModule(),
+        'Drawer' : (context) => DrawerModule(),
         },
         debugShowCheckedModeBanner: false,
       ),
