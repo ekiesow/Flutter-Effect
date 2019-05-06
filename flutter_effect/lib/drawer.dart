@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_effect/profile.dart';
+import 'package:flutter_effect/settings.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -8,13 +9,13 @@ class MainDrawer extends StatefulWidget {
 }
 
 class _MainDrawerState extends State<MainDrawer> {
-  List<Widget> otherAccounts = [
+/*  List<Widget> otherAccounts = [
     IconButton(icon: Icon(Icons.settings),
         onPressed: (){
           print("tapped");
         }
     ),
-  ];
+  ];*/
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,15 @@ class _MainDrawerState extends State<MainDrawer> {
                 ),
               ),
             ),
-            otherAccountsPictures: otherAccounts,
+            otherAccountsPictures: <Widget>[
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: (){
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Settings()));                  }
+              )
+            ],
             decoration: BoxDecoration(
                 color: Theme.of(context).backgroundColor
             ),
