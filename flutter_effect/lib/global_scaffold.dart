@@ -39,17 +39,6 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
   @override
   Widget build(BuildContext context) {
 
-//    FutureBuilder<dynamic>(
-//      future: SharedPref().getBackgroundColorPref(),
-//      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
-//        return setColor(snapshot.data);
-//
-////          snapshot.hasData ?
-////        parseColor(snapshot.data, GlobalScaffold.backgroundColor) :
-////        getDefaultColor(widget.context, GlobalScaffold.backgroundColor);
-//      },
-//    );
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: widget.color,
@@ -86,7 +75,7 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
 //    }
 //    else {
 //      setState(() {
-//        print("defalut State");
+//        print("default State");
 //        GlobalScaffold.backgroundColor = Colors.blue;
 //      });
 //    }

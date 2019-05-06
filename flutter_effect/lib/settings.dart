@@ -71,15 +71,17 @@ class _SettingsFormState extends State<SettingsForm> {
               icon: Icon(Icons.save),
               onPressed: () {
                 if(_settingsFormKey.currentState.validate()){
-                  if(_userDisplayName != "")
+                  if(userDisplayController.text != "") {
                     Scaffold.of(context).showSnackBar(mySnackBar);
 
-                  setState(() {
-                    _userDisplayName = userDisplayController.text;
-                  });
+                    setState(() {
+                      _userDisplayName = userDisplayController.text;
+                    });
 
-                  // TODO: update FireBase with _userDisplayName
+                    userDisplayController.text = "";
 
+                    // TODO: update FireBase with _userDisplayName
+                  }
                 }
               },
             ),
@@ -107,15 +109,17 @@ class _SettingsFormState extends State<SettingsForm> {
               icon: Icon(Icons.save),
               onPressed: () {
                 if(_settingsFormKey.currentState.validate()){
-                  if(_userName != "")
+                  if(userNameController.text != "") {
                     Scaffold.of(context).showSnackBar(mySnackBar);
 
-                  setState(() {
-                    _userName = userNameController.text;
-                  });
+                    setState(() {
+                      _userName = userNameController.text;
+                    });
 
-                  // TODO: update FireBase with _userName
+                    userNameController.text = "";
 
+                    // TODO: update FireBase with _userName
+                  }
                 }
               },
             ),
