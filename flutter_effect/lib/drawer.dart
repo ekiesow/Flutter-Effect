@@ -3,7 +3,6 @@ import 'package:flutter_effect/profile.dart';
 import 'package:flutter_effect/settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class MainDrawer extends StatefulWidget {
   @override
   _MainDrawerState createState() => _MainDrawerState();
@@ -22,13 +21,12 @@ class _MainDrawerState extends State<MainDrawer> {
             // TODO: get user's name from FB
             accountName: StreamBuilder(
               stream: Firestore.instance
-                  .collection("name")
-                  .document("VvqgGrzToXRYvqRqAYDp")
+                  .collection("username")
+                  .document("3zqigfRFGwW3gSCEgeME")
                   .snapshots(),
               builder: (context, snapshot) {
-                if(!snapshot.hasData) return Text("Error");
-                name = snapshot.data['name'].toString();
-                return Text(snapshot.data['name'].toString());
+                if (!snapshot.hasData) return Text("Error");
+                return Text(snapshot.data['username'].toString());
               },
             ),
             accountEmail: StreamBuilder(
@@ -37,39 +35,43 @@ class _MainDrawerState extends State<MainDrawer> {
                   .document("nYa62ZVHCFayRavfNuNn")
                   .snapshots(),
               builder: (context, snapshot) {
-                if(!snapshot.hasData) return Text("Error");
-                print(name);
+                if (!snapshot.hasData) return Text("Error");
                 return Text(snapshot.data['email'].toString());
               },
             ),
             currentAccountPicture: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Profile()));
               },
               child: CircleAvatar(
-                // TODO: add background image from account,
-                //  TODO: if null show background with first letter of name
-//                backgroundImage: ,
                 backgroundColor: Colors.white,
-                child: Text("A",
-                  style: TextStyle(fontSize: 40.0),
+                child: StreamBuilder(
+                  stream: Firestore.instance
+                      .collection("username")
+                      .document("3zqigfRFGwW3gSCEgeME")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text("Error");
+                    name = snapshot.data['username'].toString();
+                    name = name.substring(0, 1);
+                    return Text("$name",
+                      style: TextStyle(fontSize: 40),);
+                  },
                 ),
               ),
             ),
             otherAccountsPictures: <Widget>[
               IconButton(
-                icon: Icon(Icons.settings),
-                onPressed: (){
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Settings()));                  }
-              )
+                  icon: Icon(Icons.settings),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Settings()));
+                  })
             ],
-            decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor
-            ),
+            decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
 //            onDetailsPressed: () {
 //              // TODO: do awesome stuff here, or not
 //              setState(() {
@@ -77,7 +79,6 @@ class _MainDrawerState extends State<MainDrawer> {
 //              });
 //            },
           ),
-
           moduleListTile("Scaffold"),
           Divider(),
           moduleListTile("Drawer"),
@@ -94,7 +95,7 @@ class _MainDrawerState extends State<MainDrawer> {
     );
   }
 
-  Widget moduleListTile(String moduleName){
+  Widget moduleListTile(String moduleName) {
     return ListTile(
       title: Text(moduleName),
       trailing: Icon(Icons.arrow_forward),
@@ -104,8 +105,4 @@ class _MainDrawerState extends State<MainDrawer> {
       },
     );
   }
-
 }
-
-
-

@@ -31,7 +31,7 @@ class _SettingsFormState extends State<SettingsForm> {
       SnackBar(content: Text("Updating . . ."), duration: Duration(seconds: 2));
 
   String _userDisplayName = "";
-  String _userName = "";
+  String _name = "";
 
   @override
   void dispose() {
@@ -83,11 +83,11 @@ class _SettingsFormState extends State<SettingsForm> {
 
                     Firestore.instance.runTransaction((transaction) async {
                       DocumentSnapshot freshSnap = await Firestore.instance
-                          .collection("name")
-                          .document("VvqgGrzToXRYvqRqAYDp")
+                          .collection("username")
+                          .document("3zqigfRFGwW3gSCEgeME")
                           .get();
                       await transaction.update(freshSnap.reference, {
-                        "name": _userDisplayName,
+                        "username": _userDisplayName,
                       });
                     });
                   }
@@ -111,10 +111,10 @@ class _SettingsFormState extends State<SettingsForm> {
               textAlign: TextAlign.center,
 //              validator: (nameValue) => nameValue.isEmpty ? "Needs Input" : null,
               controller: userNameController,
-              onSaved: (nameValue) => _userName = nameValue,
+              onSaved: (nameValue) => _name = nameValue,
             ),
             IconButton(
-              key: Key("userName"),
+              key: Key("name"),
               icon: Icon(Icons.save),
               onPressed: () {
                 if (_settingsFormKey.currentState.validate()) {
@@ -122,18 +122,18 @@ class _SettingsFormState extends State<SettingsForm> {
                     Scaffold.of(context).showSnackBar(mySnackBar);
 
                     setState(() {
-                      _userName = userNameController.text;
+                      _name = userNameController.text;
                     });
 
                     userNameController.text = "";
 
                     Firestore.instance.runTransaction((transaction) async {
                       DocumentSnapshot freshSnap = await Firestore.instance
-                          .collection("username")
-                          .document("3zqigfRFGwW3gSCEgeME")
+                          .collection("name")
+                          .document("VvqgGrzToXRYvqRqAYDp")
                           .get();
                       await transaction.update(freshSnap.reference, {
-                        "username": _userName,
+                        "name": _name,
                       });
                     });
                   }
