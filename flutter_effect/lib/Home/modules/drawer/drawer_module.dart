@@ -26,12 +26,25 @@ class DrawerBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text("Coming Soon . . .",
-          style: TextStyle(
-            fontFamily: 'Roboto',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: Text("Details Coming Soon . . .",
+              style: TextStyle(
+                fontFamily: 'Roboto',
+              ),
+            ),
           ),
-        ),
+          Center(
+            child: Text("See drawer in AppBar.",
+              style: TextStyle(
+                fontFamily: 'Roboto',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
