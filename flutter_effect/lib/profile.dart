@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
 
   Future<Null> _uploadProfilePicture() async {
     StorageReference storageRef =
-        FirebaseStorage.instance.ref().child("fluttereffect-75b2f.appspot.com");
+        FirebaseStorage.instance.ref().child("/pictures").child("image.jpg");
     final StorageUploadTask uploadTask = storageRef.putFile(_image);
     return await (await uploadTask.onComplete).ref.getDownloadURL();
   }
