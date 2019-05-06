@@ -18,24 +18,29 @@ class _ProfileState extends State<Profile> {
         padding: const EdgeInsets.only(top: 12.0),
         child: Column(
           children: <Widget>[
-            CircleAvatar(
-              // TODO: add background image from account, if null show background with first letter of name
+            GestureDetector(
+              onTap: () {
+                
+              },
+              child: CircleAvatar(
+                // TODO: add background image from account, if null show background with first letter of name
 //                    backgroundImage: ,
-              backgroundColor: Theme.of(context).backgroundColor,
-              child: StreamBuilder(
-                stream: Firestore.instance
-                    .collection("username")
-                    .document("3zqigfRFGwW3gSCEgeME")
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) return Text("Error");
-                  name = snapshot.data['username'].toString();
-                  name = name.substring(0, 1);
-                  return Text("$name",
-                    style: TextStyle(fontSize: 40),);
-                },
+                backgroundColor: Theme.of(context).backgroundColor,
+                child: StreamBuilder(
+                  stream: Firestore.instance
+                      .collection("username")
+                      .document("3zqigfRFGwW3gSCEgeME")
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Text("Error");
+                    name = snapshot.data['username'].toString();
+                    name = name.substring(0, 1);
+                    return Text("$name",
+                      style: TextStyle(fontSize: 40),);
+                  },
+                ),
+                radius: 60.0,
               ),
-              radius: 60.0,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 12.0),
