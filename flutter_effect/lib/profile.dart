@@ -20,7 +20,6 @@ class _ProfileState extends State<Profile> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
-                
               },
               child: CircleAvatar(
                 // TODO: add background image from account, if null show background with first letter of name
