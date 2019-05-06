@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_effect/profile.dart';
 import 'package:flutter_effect/settings.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -9,13 +10,7 @@ class MainDrawer extends StatefulWidget {
 }
 
 class _MainDrawerState extends State<MainDrawer> {
-/*  List<Widget> otherAccounts = [
-    IconButton(icon: Icon(Icons.settings),
-        onPressed: (){
-          print("tapped");
-        }
-    ),
-  ];*/
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +20,28 @@ class _MainDrawerState extends State<MainDrawer> {
         children: <Widget>[
           UserAccountsDrawerHeader(
             // TODO: get user's name from FB
-            accountName: Text("Austin Pope"),
-            // TODO: get username from FB
-            accountEmail: Text("itstheradishspirit"),
+            accountName: StreamBuilder(
+              stream: Firestore.instance
+                  .collection("name")
+                  .document("VvqgGrzToXRYvqRqAYDp")
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if(!snapshot.hasData) return Text("Error");
+                name = snapshot.data['name'].toString();
+                return Text(snapshot.data['name'].toString());
+              },
+            ),
+            accountEmail: StreamBuilder(
+              stream: Firestore.instance
+                  .collection("email")
+                  .document("nYa62ZVHCFayRavfNuNn")
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if(!snapshot.hasData) return Text("Error");
+                print(name);
+                return Text(snapshot.data['email'].toString());
+              },
+            ),
             currentAccountPicture: GestureDetector(
               onTap: (){
                 Navigator.pop(context);

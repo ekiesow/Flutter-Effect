@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_effect/global_scaffold.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -9,10 +10,9 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-
     return GlobalScaffold(
       title: "Settings",
-        body: SettingsForm(),
+      body: SettingsForm(),
     );
   }
 }
@@ -27,13 +27,14 @@ class _SettingsFormState extends State<SettingsForm> {
   final userDisplayController = TextEditingController();
   final userNameController = TextEditingController();
 
-  final mySnackBar = SnackBar(content: Text("Updating . . ."), duration: Duration(seconds: 1));
+  final mySnackBar =
+      SnackBar(content: Text("Updating . . ."), duration: Duration(seconds: 2));
 
   String _userDisplayName = "";
   String _userName = "";
 
   @override
-  void dispose(){
+  void dispose() {
     userDisplayController.dispose();
     userNameController.dispose();
     super.dispose();
@@ -55,9 +56,9 @@ class _SettingsFormState extends State<SettingsForm> {
                 hintStyle: TextStyle(
                     fontStyle: FontStyle.italic,
                     color: Theme.of(context).primaryColor,
-                    fontFamily: 'Roboto'
-                ),
-                prefixIcon: Icon(Icons.edit,
+                    fontFamily: 'Roboto'),
+                prefixIcon: Icon(
+                  Icons.edit,
                   color: Theme.of(context).primaryColor,
                 ),
               ),
@@ -70,8 +71,8 @@ class _SettingsFormState extends State<SettingsForm> {
               key: Key("displayName"),
               icon: Icon(Icons.save),
               onPressed: () {
-                if(_settingsFormKey.currentState.validate()){
-                  if(userDisplayController.text != "") {
+                if (_settingsFormKey.currentState.validate()) {
+                  if (userDisplayController.text != "") {
                     Scaffold.of(context).showSnackBar(mySnackBar);
 
                     setState(() {
@@ -80,7 +81,15 @@ class _SettingsFormState extends State<SettingsForm> {
 
                     userDisplayController.text = "";
 
-                    // TODO: update FireBase with _userDisplayName
+                    Firestore.instance.runTransaction((transaction) async {
+                      DocumentSnapshot freshSnap = await Firestore.instance
+                          .collection("name")
+                          .document("VvqgGrzToXRYvqRqAYDp")
+                          .get();
+                      await transaction.update(freshSnap.reference, {
+                        "name": _userDisplayName,
+                      });
+                    });
                   }
                 }
               },
@@ -93,9 +102,9 @@ class _SettingsFormState extends State<SettingsForm> {
                 hintStyle: TextStyle(
                     fontStyle: FontStyle.italic,
                     color: Theme.of(context).primaryColor,
-                    fontFamily: 'Roboto'
-                ),
-                prefixIcon: Icon(Icons.edit,
+                    fontFamily: 'Roboto'),
+                prefixIcon: Icon(
+                  Icons.edit,
                   color: Theme.of(context).primaryColor,
                 ),
               ),
@@ -108,8 +117,8 @@ class _SettingsFormState extends State<SettingsForm> {
               key: Key("userName"),
               icon: Icon(Icons.save),
               onPressed: () {
-                if(_settingsFormKey.currentState.validate()){
-                  if(userNameController.text != "") {
+                if (_settingsFormKey.currentState.validate()) {
+                  if (userNameController.text != "") {
                     Scaffold.of(context).showSnackBar(mySnackBar);
 
                     setState(() {
@@ -118,7 +127,15 @@ class _SettingsFormState extends State<SettingsForm> {
 
                     userNameController.text = "";
 
-                    // TODO: update FireBase with _userName
+                    Firestore.instance.runTransaction((transaction) async {
+                      DocumentSnapshot freshSnap = await Firestore.instance
+                          .collection("username")
+                          .document("3zqigfRFGwW3gSCEgeME")
+                          .get();
+                      await transaction.update(freshSnap.reference, {
+                        "username": _userName,
+                      });
+                    });
                   }
                 }
               },
@@ -128,6 +145,4 @@ class _SettingsFormState extends State<SettingsForm> {
       ),
     );
   }
-
-
 }
