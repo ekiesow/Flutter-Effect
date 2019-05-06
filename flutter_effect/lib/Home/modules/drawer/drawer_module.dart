@@ -14,7 +14,7 @@ class _DrawerModuleState extends State<DrawerModule> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      title: "Scaffold",
+      title: "Drawer",
       context: context,
       body: DrawerBody(),
       drawer: ModuleDrawer(),
