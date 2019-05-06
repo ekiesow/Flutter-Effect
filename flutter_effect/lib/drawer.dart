@@ -45,18 +45,12 @@ class _MainDrawerState extends State<MainDrawer> {
               ),
             ),
             otherAccountsPictures: <Widget>[
-              GestureDetector(
-                onTap: (){
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: (){
                   Navigator.pop(context);
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Settings()));
-                },
-                child: IconButton(
-                  icon: Icon(Icons.settings),
-                  onPressed: (){
-                    print("tapped");
-                  }
-                )
+                      MaterialPageRoute(builder: (context) => Settings()));                  }
               )
             ],
             decoration: BoxDecoration(
