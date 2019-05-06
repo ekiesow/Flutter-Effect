@@ -1,8 +1,11 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_effect/global_scaffold.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:file_picker/file_picker.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -19,6 +22,22 @@ class _ProfileState extends State<Profile> {
     setState(() {
       _image = image;
     });
+  }
+
+  Future<Null> _uploadProfilePicture() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+
+    final StorageReference storageRef = FirebaseStorage.instance.ref().child("pictures");
+    final StorageUploadTask uploadTask = storageRef.putFile(
+      File("pictures"),
+      StorageMetadata(
+        contentType: "image" + '/' ".jpg",
+      )
+    );
+    final StorageTaskSnapshot downloadUrl =
+    (await uploadTask.onComplete);
+    final String url = (await downloadUrl.ref.getDownloadURL());
+    print('URL is $url');
   }
 
   @override
