@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_effect/global_scaffold.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class DrawerModule extends StatefulWidget {
   @override
@@ -42,6 +43,20 @@ class DrawerBody extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'Roboto',
               ),
+            ),
+          ),
+          Center(
+            child: Text("Typically, the child of a Drawer is a ListView."
+                "This is to allow for scrolling if the widgets in your drawer"
+                "are longer than the screen.",
+              style: TextStyle(
+                fontFamily: 'Roboto',
+              ),
+            ),
+          ),
+          Center(
+            child: WebView(
+              initialUrl: null,
             ),
           ),
         ],
