@@ -1,7 +1,11 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_effect/global_scaffold.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:file_picker/file_picker.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -10,6 +14,22 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   String name;
+  File _image;
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+  Future<Null> _uploadProfilePicture() async {
+    StorageReference storageRef =
+        FirebaseStorage.instance.ref().child("/pictures").child("image.jpg");
+    final StorageUploadTask uploadTask = storageRef.putFile(_image);
+    return await (await uploadTask.onComplete).ref.getDownloadURL();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +40,8 @@ class _ProfileState extends State<Profile> {
           children: <Widget>[
             GestureDetector(
               onTap: () {
+                getImage();
+                _uploadProfilePicture();
               },
               child: CircleAvatar(
                 // TODO: add background image from account, if null show background with first letter of name
