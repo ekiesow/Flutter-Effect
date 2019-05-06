@@ -23,24 +23,36 @@ class GlobalScaffold extends StatefulWidget {
 
 class _GlobalScaffoldState extends State<GlobalScaffold> {
 
-  _GlobalScaffold() {
-    FutureBuilder<dynamic>(
-      future: SharedPref().getBackgroundColorPref(),
-      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
-        return setColor(snapshot.data);
-
-//          snapshot.hasData ?
-//        parseColor(snapshot.data, GlobalScaffold.backgroundColor) :
-//        getDefaultColor(widget.context, GlobalScaffold.backgroundColor);
-      },
-    );
-  }
+//  _GlobalScaffold() {
+//    FutureBuilder<dynamic>(
+//      future: SharedPref().getBackgroundColorPref(),
+//      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
+////        return setColor(snapshot.data);
+//
+////          snapshot.hasData ?
+////        parseColor(snapshot.data, GlobalScaffold.backgroundColor) :
+////        getDefaultColor(widget.context, GlobalScaffold.backgroundColor);
+//      },
+//    );
+//  }
 
   @override
   Widget build(BuildContext context) {
+
+//    FutureBuilder<dynamic>(
+//      future: SharedPref().getBackgroundColorPref(),
+//      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
+//        return setColor(snapshot.data);
+//
+////          snapshot.hasData ?
+////        parseColor(snapshot.data, GlobalScaffold.backgroundColor) :
+////        getDefaultColor(widget.context, GlobalScaffold.backgroundColor);
+//      },
+//    );
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: GlobalScaffold.backgroundColor,
+        backgroundColor: widget.color,
         title: Text(widget.title,
         ),
         centerTitle: true,
@@ -51,32 +63,32 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
     );
   }
 
-  getDefaultColor(BuildContext context, Color backgroundColor) {
-    backgroundColor = Colors.lightBlue;
-  }
+//  getDefaultColor(BuildContext context, Color backgroundColor) {
+//    backgroundColor = Colors.lightBlue;
+//  }
+//
+//  parseColor(int value, Color backgroundColor){
+//    backgroundColor = new Color(value);
+//
+//  }
 
-  parseColor(int value, Color backgroundColor){
-    backgroundColor = new Color(value);
-
-  }
-
-  setColor(int snapshotData){
-    if(snapshotData == Colors.blue.value){
-      setState(() {
-        GlobalScaffold.backgroundColor = Colors.blue;
-      });
-    }
-    else if(snapshotData == Colors.red.value){
-      setState(() {
-        print("Red State");
-        GlobalScaffold.backgroundColor = Colors.red;
-      });
-    }
-    else {
-      setState(() {
-        print("defalut State");
-        GlobalScaffold.backgroundColor = Colors.blue;
-      });
-    }
-  }
+//  setColor(int snapshotData){
+//    if(snapshotData == Colors.blue.value){
+//      setState(() {
+//        GlobalScaffold.backgroundColor = Colors.blue;
+//      });
+//    }
+//    else if(snapshotData == Colors.red.value){
+//      setState(() {
+//        print("Red State");
+//        GlobalScaffold.backgroundColor = Colors.red;
+//      });
+//    }
+//    else {
+//      setState(() {
+//        print("defalut State");
+//        GlobalScaffold.backgroundColor = Colors.blue;
+//      });
+//    }
+//  }
 }

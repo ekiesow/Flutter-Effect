@@ -9,24 +9,28 @@ class AppBarModule extends StatefulWidget {
 }
 
 class _AppBarModuleState extends State<AppBarModule> {
+  Color appBarColor;
+
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
       title: "AppBar",
       body: Container(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              dropDownType(),
-
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Center(
+                child: dropDownType(),
+            ),
+          ],
         ),
       ),
+      color: appBarColor,
     );
   }
 
-  List<String> colorMenu = ["Blue", "Red"];
+  List<String> colorMenu = ["Blue", "Red", "Green", "Purple"];
   String selection = "Blue";
   Widget dropDownType() {
     return DropdownButton<String>(
@@ -35,9 +39,8 @@ class _AppBarModuleState extends State<AppBarModule> {
       onChanged: (String newSelection) {
         setState(() {
           this.selection = newSelection;
-          SharedPref().updateBackgroundColorPref(getSharedPrefColor());
-          SharedPref().getBackgroundColorPref();
-//          setColor();
+          setColor();
+          getCurColor();
 
         });
       },
@@ -52,33 +55,56 @@ class _AppBarModuleState extends State<AppBarModule> {
     );
   }
 
-  int getSharedPrefColor(){
-    for(String selection in colorMenu){
-      if(selection == "Blue"){
-        return Colors.blue.value;
-      }
-      else if(selection == "Red"){
-        return Colors.red.value;
-      }
-    }
-    return Colors.blue.value;
-
-  }
-
-  String getCurColor(){
+//  int getSharedPrefColor(){
+//    for(String selection in colorMenu){
+//      if(selection == "Blue"){
+//        return Colors.blue.value;
+//      }
+//      else if(selection == "Red"){
+//        return Colors.red.value;
+//      }
+//    }
+//    return Colors.blue.value;
+//
+//  }
+//
+  getCurColor(){
     int colorInt = GlobalScaffold.backgroundColorInt;
     if(colorInt == Colors.blue.value){
-      return "Blue";
+      setState(() {
+        appBarColor = Colors.blue;
+
+      });
     }
     else if(colorInt == Colors.red.value){
-      return "Red";
+      setState(() {
+        appBarColor = Colors.red;
+
+      });
     }
-    return "Blue";
+    else if(colorInt == Colors.green.value){
+      setState(() {
+        appBarColor = Colors.green;
+
+      });
+    }
+    else if(colorInt == Colors.purple.value){
+      setState(() {
+        appBarColor = Colors.purple;
+
+      });
+    }
+    else{
+      setState(() {
+        appBarColor = Colors.blue;
+
+      });
+    }
   }
 
 
-//  void setColor(){
-////    GlobalScaffold.backgroundColor = new Color(GlobalScaffold.backgroundColorInt);
+  void setColor(){
+//    GlobalScaffold.backgroundColor = new Color(GlobalScaffold.backgroundColorInt);
 //    int colorInt = GlobalScaffold.backgroundColorInt;
 //    if(colorInt == Colors.blue.value){
 //      GlobalScaffold.backgroundColor = Colors.blue;
@@ -86,7 +112,46 @@ class _AppBarModuleState extends State<AppBarModule> {
 //    else if(colorInt == Colors.red.value){
 //      GlobalScaffold.backgroundColor = Colors.red;
 //    }
-//  }
+    if(selection == "Blue"){
+      print("setColor: Blue");
+      setState(() {
+        GlobalScaffold.backgroundColorInt = Colors.blue.value;
+        SharedPref().updateBackgroundColorPref();
+
+      });
+    }
+    else if(selection == "Red"){
+      print("setColor: Red");
+      setState(() {
+        GlobalScaffold.backgroundColorInt = Colors.red.value;
+        SharedPref().updateBackgroundColorPref();
+
+      });
+    }
+    else if(selection == "Green"){
+      print("setColor: Green");
+      setState(() {
+        GlobalScaffold.backgroundColorInt = Colors.green.value;
+        SharedPref().updateBackgroundColorPref();
+
+      });
+    }
+    else if(selection == "Purple"){
+      print("setColor: Purple");
+      setState(() {
+        GlobalScaffold.backgroundColorInt = Colors.purple.value;
+        SharedPref().updateBackgroundColorPref();
+
+      });
+    }
+    else{
+      setState(() {
+        GlobalScaffold.backgroundColorInt = Colors.blue.value;
+        SharedPref().updateBackgroundColorPref();
+
+      });
+    }
+  }
 
 }
 

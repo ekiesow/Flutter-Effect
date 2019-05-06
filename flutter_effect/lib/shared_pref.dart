@@ -6,9 +6,9 @@ class SharedPref {
   SharedPref();
 
 
-  updateBackgroundColorPref(int backgroundColor) async {
+  updateBackgroundColorPref() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("backgroundColor", backgroundColor);
+    await prefs.setInt("backgroundColor", GlobalScaffold.backgroundColorInt);
   }
 
   getBackgroundColorPref() async {
