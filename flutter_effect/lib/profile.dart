@@ -16,9 +16,35 @@ class Profile extends StatelessWidget {
                 // TODO: add background image from account, if null show background with first letter of name
 //                    backgroundImage: ,
                 backgroundColor: Theme.of(context).backgroundColor,
-                child: Text("E",
-                  style: TextStyle(fontSize: 40.0,
-                      color: Colors.white),
+                child: Column(
+//                  mainAxisAlignment: MainAxisAlignment.center,
+//                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 0.0),
+                          child: Text("E",
+                            style: TextStyle(fontSize: 60.0,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: (){
+                              // TODO: camera shit here
+                              print("Cheese!");
+                            },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 radius: 60.0,
               ),
