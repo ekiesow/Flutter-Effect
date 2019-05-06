@@ -33,31 +33,42 @@ class DrawerBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Center(
-            child: Text("Details Coming Soon . . .",
-              style: TextStyle(
-                fontFamily: 'Roboto',
+//          Center(
+//            child: Text("Details Coming Soon . . .",
+//              style: TextStyle(
+//                fontFamily: 'Roboto',
+//              ),
+//            ),
+//          ),
+//          Center(
+//            child: Text("See drawer in AppBar.",
+//              style: TextStyle(
+//                fontFamily: 'Roboto',
+//              ),
+//            ),
+//          ),
+          Wrap(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                child: Text("Typically, the child of a Drawer is a ListView. "
+                    "This is to allow for scrolling if the widgets in your drawer"
+                    " are longer than the screen. Then add a DrawerHeader widget "
+                    "as the first parameter in the ListView to allow for space "
+                    "at the top so it does not get cut off and look cluttered."
+                    "\n\nSee the drawer in the menu above."
+                    " \nSelect the web icon below to view example code.",
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 18.0,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Center(
-            child: Text("See drawer in AppBar.",
-              style: TextStyle(
-                fontFamily: 'Roboto',
-              ),
-            ),
-          ),
-          Center(
-            child: Text("Typically, the child of a Drawer is a ListView."
-                "This is to allow for scrolling if the widgets in your drawer"
-                "are longer than the screen.",
-              style: TextStyle(
-                fontFamily: 'Roboto',
-              ),
-            ),
+            ],
           ),
           IconButton(
               icon: Icon(Icons.web),
+              iconSize: 44.0,
               onPressed: (){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DrawerWebView()));
