@@ -209,11 +209,11 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
               padding: EdgeInsets.only(bottom: 12.0),
           ),
-          RaisedButton(
-            child:
-            Text('Create an account(verify)', style: TextStyle(fontSize: 20.0)),
-            onPressed: validateAndSubmit,
-          ),
+//          RaisedButton(
+//            child:
+//            Text('Create an account(verify)', style: TextStyle(fontSize: 20.0)),
+//            onPressed: validateAndSubmit,
+//          ),
           RaisedButton(
             child:
             Text('Create an account', style: TextStyle(fontSize: 20.0)),
