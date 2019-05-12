@@ -19,26 +19,41 @@ class _AppBarModuleState extends State<AppBarModule> {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       title: "AppBar",
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 250.0),
+        child: ListView(
           children: <Widget>[
-            Center(
-                child: dropDownType(),
-            ),
-            IconButton(
-                icon: Icon(Icons.web),
-                iconSize: 44.0,
-                onPressed: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>
-                          ModuleWebView(
-                            title: "AppBar",
-                            url: url,)
-                      )
-                  );
-                }
+            Padding(
+              padding: const EdgeInsets.all(22.0),
+              child: Card(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ListTile(
+                        leading: IconButton(
+                            icon: Icon(Icons.web,
+                              color: Colors.black,
+                            ),
+                            iconSize: 44.0,
+                            onPressed: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) =>
+                                      ModuleWebView(
+                                        title: "AppBar",
+                                        url: url,)
+                                  )
+                              );
+                            }x
+                        ),
+                        trailing: Center(child: dropDownType()),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -61,6 +76,7 @@ class _AppBarModuleState extends State<AppBarModule> {
 
         });
       },
+
 
       items: colorMenu.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

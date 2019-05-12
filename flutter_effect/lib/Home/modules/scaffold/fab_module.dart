@@ -16,33 +16,49 @@ class _FABModuleState extends State<FABModule> {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       title: "floatingActionButton",
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 200.0),
+        child: ListView(
           children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                child: Text("The Floating Action Button (FAB) is generally used"
-                    "for actions such as \"share,\" \"Navigate,\" and other similar"
-                    "actions. It is not typical to use more than one FAB per route (screen).",
-                  textAlign: TextAlign.start,
+            Padding(
+              padding: const EdgeInsets.all(22.0),
+              child: Card(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    ListTile(
+                      title: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 22.0, bottom: 22.0),
+                          child: Text("The Floating Action Button (FAB) is generally used"
+                              "for actions such as \"share,\" \"Navigate,\" and other similar"
+                              "actions. It is not typical to use more than one FAB per route (screen).",
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                      ),
+                      leading: IconButton(
+                          icon: Icon(Icons.web,
+                            color: Colors.black,
+                          ),
+                          iconSize: 44.0,
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) =>
+                                    ModuleWebView(
+                                      title: "floatingActionButton",
+                                      url: url,)
+                                )
+                            );
+                          }
+                      ),
+                    ),
+
+
+                  ],
                 ),
               ),
-            ),
-            IconButton(
-                icon: Icon(Icons.web),
-                iconSize: 44.0,
-                onPressed: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>
-                          ModuleWebView(
-                            title: "floatingActionButton",
-                            url: url,)
-                      )
-                  );
-                }
             ),
           ],
         ),
