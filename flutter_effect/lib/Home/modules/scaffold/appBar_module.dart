@@ -46,7 +46,7 @@ class _AppBarModuleState extends State<AppBarModule> {
                                         url: url,)
                                   )
                               );
-                            }x
+                            }
                         ),
                         trailing: Center(child: dropDownType()),
                       ),
