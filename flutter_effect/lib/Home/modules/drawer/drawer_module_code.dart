@@ -22,7 +22,7 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
           ),
           ListTile(
-              title: Text("Close"),
+              title: Text("Close Drawer"),
               trailing: Icon(Icons.clear),
               onTap: () {
                 Navigator.pop(context);

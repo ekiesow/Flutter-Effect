@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_effect/Home/modules/drawer/drawer_webview.dart';
+import 'package:flutter_effect/Home/modules/webview.dart';
 
 import 'package:flutter_effect/global_scaffold.dart';
 
@@ -25,6 +25,8 @@ class _DrawerModuleState extends State<DrawerModule> {
 }
 
 class DrawerBody extends StatelessWidget {
+  final String url =
+      "https://github.com/ekiesow/Flutter-Effect/blob/e5f1ef99590a061f105a4796f5071be253a0580f/flutter_effect/lib/Home/modules/drawer/module_code.dart#L11-L33";
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,7 @@ class DrawerBody extends StatelessWidget {
                     "at the top so it does not get cut off and look cluttered."
                     "\n\nSee the drawer in the menu above."
                     " \nSelect the web icon below to view example code.",
+                  textAlign: TextAlign.start,
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 18.0,
@@ -71,7 +74,12 @@ class DrawerBody extends StatelessWidget {
               iconSize: 44.0,
               onPressed: (){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DrawerWebView()));
+                    MaterialPageRoute(builder: (context) =>
+                        ModuleWebView(
+                          title: "Drawer",
+                          url: url,)
+                    )
+                );
               }
           ),
         ],
@@ -105,7 +113,20 @@ class _ModuleDrawerState extends State<ModuleDrawer> {
                   .backgroundColor,
             ),
           ),
-        ] + listTiles + [
+          ListTile(
+            title: Text("Home"),
+            trailing: Icon(Icons.home),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              }
+          ),
+          Divider(),
+          ListTile(
+            title: Text("Edit"),
+            trailing: Icon(Icons.edit),
+          ),
+          Divider(),
           ListTile(
             title: Text("Close"),
             trailing: Icon(Icons.clear),
@@ -114,30 +135,10 @@ class _ModuleDrawerState extends State<ModuleDrawer> {
             }
           ),
           Divider(),
-          ListTile(
-              title: Text("Back"),
-              trailing: Icon(Icons.arrow_back),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-              }
-          ),
         ]
       ),
     );
   }
 
-  List<Widget> listTiles = [
-    ListTile(
-      title: Text("Home"),
-      trailing: Icon(Icons.home),
-    ),
-    Divider(),
-    ListTile(
-      title: Text("Edit"),
-      trailing: Icon(Icons.edit),
-    ),
-    Divider(),
-  ];
 }
 

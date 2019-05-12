@@ -11,10 +11,12 @@ class GlobalScaffold extends StatefulWidget {
   static int backgroundColorInt;
   static Color backgroundColor;
   final BuildContext context;
+  final Widget floatingActionButton;
 
   const GlobalScaffold({Key key,
     this.drawer, @required this.body, this.color,
-    @required this.title, this.context, this.actions}) :
+    @required this.title, this.context, this.actions,
+    this.floatingActionButton}) :
         super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
         centerTitle: true,
         actions: widget.actions,
       ),
+      floatingActionButton: widget.floatingActionButton,
       drawer: widget.drawer,
       body: widget.body,
     );
