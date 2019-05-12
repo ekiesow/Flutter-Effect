@@ -16,15 +16,16 @@ class _MyScaffoldState extends State<MyScaffold> {
   AppBar myAppBar(){
     return AppBar(
 
-      // give the AppBar a title
+      // Give the AppBar a title.
       title: Text("AppBar"),
 
-      // bool to center the title
+      // Bool to center the title.
       centerTitle: true,
-      // pick the color of your appBar
+
+      // Pick the color of your appBar.
       backgroundColor:  Colors.lightBlueAccent,
       /*
-       * may also use Theme.of(context).appBarTheme
+       * You may also use Theme.of(context).appBarTheme
        * if main returns MaterialApp with
        * theme: ThemeData(
        *  primarySwatch: Colors.myColorChoice
@@ -33,19 +34,19 @@ class _MyScaffoldState extends State<MyScaffold> {
        * )
        */
 
-      // Have an action on the right hand side of the AppBar
+      // Have an action on the right hand side of the AppBar.
       actions: <Widget>[
         IconButton(icon: Icon(
           Icons.star,
           color: Colors.yellow,
           ),
           onPressed: (){
-           // Navigate to route of saved items
+           // Navigate to route of saved items.
          }
         )
       ],
 
-      // many more options to choose from . . .
+      // There are many more options to choose from to customize your AppBar.
 
     );
   }
