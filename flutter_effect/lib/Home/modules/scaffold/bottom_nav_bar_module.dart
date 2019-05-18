@@ -9,7 +9,8 @@ class BottomNavBarModule extends StatefulWidget {
 }
 
 class _BottomNavBarModuleState extends State<BottomNavBarModule> {
-  final String url = "";
+  final String url =
+      "https://gist.github.com/ekiesow/36b4c8c0d1cdeeeb8d11334debabf941";
   int _selectedIndex = 0;
 
   @override

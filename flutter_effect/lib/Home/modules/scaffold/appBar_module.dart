@@ -13,7 +13,7 @@ class AppBarModule extends StatefulWidget {
 class _AppBarModuleState extends State<AppBarModule> {
   Color appBarColor;
   final url =
-      "https://github.com/ekiesow/Flutter-Effect/blob/7905efa168256b23a69772c7317100ab4f51450c/flutter_effect/lib/Home/modules/scaffold/appBar_code.dart#L1-L53";
+      "https://gist.github.com/ekiesow/54f41e3e6661088b0c666a08b17432fb";
 
   @override
   Widget build(BuildContext context) {

@@ -26,7 +26,7 @@ class _DrawerModuleState extends State<DrawerModule> {
 
 class DrawerBody extends StatelessWidget {
   final String url =
-      "https://github.com/ekiesow/Flutter-Effect/blob/7905efa168256b23a69772c7317100ab4f51450c/flutter_effect/lib/Home/modules/drawer/drawer_module_code.dart#L1-L54";
+      "https://gist.github.com/ekiesow/1f27ba6bebff55ce59227274d90d6d61";
 
   @override
   Widget build(BuildContext context) {

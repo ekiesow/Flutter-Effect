@@ -10,7 +10,7 @@ class FABModule extends StatefulWidget {
 
 class _FABModuleState extends State<FABModule> {
   final url =
-      "https://github.com/ekiesow/Flutter-Effect/blob/7905efa168256b23a69772c7317100ab4f51450c/flutter_effect/lib/Home/modules/scaffold/fab_module_code.dart#L1-L58";
+      "https://gist.github.com/ekiesow/c292b88fde9e961a35667882a1be982a";
 
   @override
   Widget build(BuildContext context) {
