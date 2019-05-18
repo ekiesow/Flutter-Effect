@@ -38,6 +38,7 @@ class DrawerBody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(22.0),
               child: Card(
+                color: Colors.lightBlue[100],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

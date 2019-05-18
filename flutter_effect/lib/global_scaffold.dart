@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_effect/shared_pref.dart';
+//import 'package:flutter_effect/shared_pref.dart';
 
 class GlobalScaffold extends StatefulWidget {
   final Widget drawer;
@@ -12,11 +12,12 @@ class GlobalScaffold extends StatefulWidget {
   static Color backgroundColor;
   final BuildContext context;
   final Widget floatingActionButton;
+  final Widget bottomNavigationBar;
 
   const GlobalScaffold({Key key,
     this.drawer, @required this.body, this.color,
     @required this.title, this.context, this.actions,
-    this.floatingActionButton}) :
+    this.floatingActionButton, this.bottomNavigationBar}) :
         super(key: key);
 
   @override
@@ -50,6 +51,7 @@ class _GlobalScaffoldState extends State<GlobalScaffold> {
         actions: widget.actions,
       ),
       floatingActionButton: widget.floatingActionButton,
+      bottomNavigationBar: widget.bottomNavigationBar,
       drawer: widget.drawer,
       body: widget.body,
     );

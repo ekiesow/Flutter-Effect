@@ -26,6 +26,7 @@ class _AppBarModuleState extends State<AppBarModule> {
             Padding(
               padding: const EdgeInsets.all(22.0),
               child: Card(
+                color: Colors.lightBlue[100],
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
