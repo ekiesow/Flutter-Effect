@@ -7,10 +7,10 @@ Android APK available in this directory. Code can be found in flutter_effect/lib
 ### Sample Images
 
 #### Login Screen
-![Login Screen](/images/login.jpg =200x250)
+![Login Screen](/images/login.jpg)
 
 #### Scaffold Widgets
-![Scaffold Widgets](/images/ScaffoldWidgets.jpg = 200x250)
+![Scaffold Widgets](/images/ScaffoldWidgets.jpg)
 
 #### WebView of Sample Code
-![WebView](/images/WebView.jpg =200x250)
+![WebView](/images/WebView.jpg)
